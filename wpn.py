@@ -5,8 +5,11 @@ from winsdk.windows.storage.streams import DataReader
 import io
 from PIL import Image
 import base64
+from waitress import serve
 
 app = Flask(__name__)
+
+print("WPN is running...")
 
 HTML = """
 <!DOCTYPE html>
@@ -117,4 +120,4 @@ def api():
     return jsonify(data)
 
 if __name__ == "__main__":
-    app.run(port=9050)
+    serve(app, host="0.0.0.0", port=9050)
